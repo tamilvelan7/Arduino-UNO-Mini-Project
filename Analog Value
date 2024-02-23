@@ -1,13 +1,26 @@
-void setup() {
-  // put your setup code here, to run once:
+//Arduino Uno Board
+//Baud rate 9600
+//input A0
+//Output 12
 
-pinMode(A3,INPUT);
+//Connection 5V to A0 and LED 12 pin 
+
+void setup() {
 Serial.begin(9600);
+pinMode(A0, INPUT);
+pinMode(12, OUTPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  int analog = analogRead(A3);
-  Serial.println("analog = " + String(analog));
-  delay(1000);
+  int analog=analogRead(A0);
+
+  if(analog>300){
+    digitalWrite(12, HIGH);
+    Serial.println("Analog Value = "+String(analog));
+    delay(500);
+  }else{
+    digitalWrite(12, LOW);
+    Serial.println("Analog Value = "+String(analog));
+    delay(500);
+  }
 }
